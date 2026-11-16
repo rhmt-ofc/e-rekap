@@ -1,0 +1,395 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f1f5f2;
+  --surface: #ffffff;
+  --surface-raised: #f8fbf9;
+  --surface-mint: #eaf6ee;
+  --ink: #0b1410;
+  --ink-muted: #526058;
+  --border: rgba(10, 61, 38, 0.08);
+  --border-strong: rgba(10, 61, 38, 0.15);
+  --canopy: #0a3d26;
+  --canopy-deep: #072919;
+  --canopy-mid: #115737;
+  --lime: #a3e635;
+  --lime-hover: #bef264;
+  --lime-ink: #072919;
+  --status-hadir-bg: #dcfce7;
+  --status-hadir-fg: #14532d;
+  --status-sakit-bg: #fef3c7;
+  --status-sakit-fg: #92400e;
+  --status-izin-bg: #e0f2fe;
+  --status-izin-fg: #075985;
+  --status-alpha-bg: #fee2e2;
+  --status-alpha-fg: #991b1b;
+  --shadow-sheet: 0 18px 40px -14px rgba(10, 61, 38, 0.16),
+    0 2px 8px rgba(10, 61, 38, 0.06);
+  --shadow-card: 0 10px 26px -12px rgba(10, 61, 38, 0.12),
+    0 1px 3px rgba(10, 61, 38, 0.05);
+  --shadow-dock: 0 18px 36px -8px rgba(7, 41, 25, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-sans-base);
+  --font-mono: var(--font-mono-base);
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans-base), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-num {
+  font-family: var(--font-mono-base), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.sheet-overlap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sheet);
+}
+
+.card-pro {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-pro:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sheet);
+}
+
+.btn-tactile {
+  transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.btn-tactile:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn-tactile:active:not(:disabled) {
+  transform: translateY(1px) scale(0.98);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--canopy);
+  outline-offset: 2px;
+}
+
+@keyframes splashExit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.98);
+  }
+}
+
+@keyframes cascadeIn {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(12deg) translateY(26px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0) scale(1);
+  }
+}
+
+@keyframes cardDepthIn {
+  from {
+    opacity: 0;
+    transform: perspective(1100px) rotateX(16deg) translateY(34px) scale(0.93);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1100px) rotateX(0deg) translateY(0) scale(1);
+  }
+}
+
+@keyframes floatIcon {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-4deg);
+  }
+  50% {
+    transform: translate3d(8px, -16px, 0) rotate(6deg);
+  }
+}
+
+@keyframes floatIconAlt {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(5deg);
+  }
+  50% {
+    transform: translate3d(-10px, 14px, 0) rotate(-5deg);
+  }
+}
+
+@keyframes caretBlink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes remotionBar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes remotionLogoPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.72) rotate(-8deg);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.06) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes floatOrb {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(14px, -18px, 0) scale(1.04);
+  }
+}
+
+@keyframes floatOrbReverse {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-16px, 14px, 0) scale(0.96);
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pageExitToApp {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.985);
+  }
+}
+
+@keyframes curtainEnter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes curtainLeave {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-28px);
+  }
+}
+
+@keyframes curtainHalo {
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+@keyframes curtainTextUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.curtain-enter {
+  animation: curtainEnter 420ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.curtain-leave {
+  animation: curtainLeave 480ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.curtain-halo {
+  animation: curtainHalo 1.5s ease-in-out infinite;
+}
+
+.curtain-title {
+  animation: curtainTextUp 520ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both;
+}
+
+.curtain-sub {
+  animation: curtainTextUp 520ms cubic-bezier(0.16, 1, 0.3, 1) 280ms both;
+}
+
+.animate-splash-exit {
+  animation: splashExit 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-cascade {
+  animation: cascadeIn 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-card-3d {
+  animation: cardDepthIn 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-float-icon {
+  animation: floatIcon 7.5s ease-in-out infinite;
+}
+
+.animate-float-icon-alt {
+  animation: floatIconAlt 9s ease-in-out infinite;
+}
+
+.animate-caret {
+  animation: caretBlink 0.9s steps(1) infinite;
+}
+
+.animate-remotion-logo {
+  animation: remotionLogoPop 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-remotion-bar {
+  transform-origin: left center;
+  animation: remotionBar 900ms cubic-bezier(0.22, 1, 0.36, 1) 180ms both;
+}
+
+.animate-float-orb {
+  animation: floatOrb 9s ease-in-out infinite;
+}
+
+.animate-float-orb-rev {
+  animation: floatOrbReverse 11s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 36s linear infinite;
+}
+
+.animate-page-exit {
+  animation: pageExitToApp 280ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-tactile,
+  .card-pro,
+  .animate-splash-exit,
+  .animate-cascade,
+  .animate-float-orb,
+  .animate-float-orb-rev,
+  .animate-spin-slow,
+  .animate-page-exit {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 12mm 14mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11px !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    box-shadow: none !important;
+  }
+
+  .print-table th,
+  .print-table td {
+    border: 1px solid #334155 !important;
+    padding: 5px 7px !important;
+    color: #000000 !important;
+    background: #ffffff !important;
+  }
+
+  .print-table th {
+    background: #f1f5f9 !important;
+    font-weight: 700 !important;
+  }
+}
